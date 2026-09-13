@@ -1,0 +1,22 @@
+MEDORAX ERP COMMERCIAL INTEGRATION UPDATE
+
+Replace these files in E:\medorax-production-commercial preserving the relative paths.
+
+Fixes included:
+- Removes hardcoded Admin User / Administrator identity from top navigation.
+- Top navigation loads authenticated user/profile/license information from ERP APIs.
+- Adds real profile page backed by GET /auth/me and PATCH /users/me.
+- Logout now calls POST /auth/logout and clears local authentication state.
+- Root route now opens the real Pharmacy Dashboard instead of Supplier Dashboard.
+- Supplier router is registered in FastAPI.
+- Login/session/history screens use backend authentication data instead of demo records.
+- Adds GET /auth/login-history backed by login_history records.
+- Staff directory reads branches, roles, and staff from the authenticated pharmacy API and saves changes through backend staff endpoints.
+- Supplier purchase-order view uses runtime ERP purchase records instead of fabricated orders.
+- Purchase supplier selection uses backend-loaded supplier options.
+- Reports supplier filter uses runtime supplier records.
+- Removes fabricated supplier names and dates from purchase receipt UI.
+- Purchase invoice/order screens no longer claim fake persistence with setTimeout.
+
+Important backend limitation exposed by this audit:
+The current backend has purchase-invoice endpoints but no dedicated purchase-order persistence endpoint/model. The update therefore does not invent a fake PO API. Purchase-order draft/submit persistence must be implemented against a real backend PO contract before those actions can truthfully be marked persisted.

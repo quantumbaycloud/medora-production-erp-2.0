@@ -1,0 +1,15 @@
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Environment variables / Secrets
+.env
+
+# Python / Pycache
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+
+# Alembic local db versions if needed (optional, usually versions are tracked)

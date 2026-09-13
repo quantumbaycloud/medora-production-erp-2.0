@@ -1,0 +1,9 @@
+export let salesData=[];
+export let profitData=[];
+export let purchaseData=[];
+export let inventoryData=[];
+export let gstData=[];
+export let customerData=[];
+export let supplierData=[];
+export function setRuntimeData(d){salesData=d.salesData||[];profitData=d.profitData||[];purchaseData=d.purchaseData||[];inventoryData=d.inventoryData||[];gstData=d.gstData||[];customerData=d.customerData||[];supplierData=d.supplierData||[];}
+export function clearRuntimeData(){setRuntimeData({});}

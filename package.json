@@ -1,0 +1,12 @@
+{
+  "name": "medorax-erp-platform",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["frontend"],
+  "scripts": {
+    "web:build": "npm --prefix frontend run build",
+    "web:lint": "npm --prefix frontend run lint",
+    "desktop:dist": "npm --prefix frontend run dist",
+    "deploy": "bash scripts/deploy-production.sh"
+  }
+}

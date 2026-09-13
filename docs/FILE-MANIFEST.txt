@@ -1,0 +1,479 @@
+.gitignore
+README.md
+backend/.env.example
+backend/.gitignore
+backend/Dockerfile
+backend/README-local.md
+backend/README.md
+backend/alembic.ini
+backend/app/audit/models.py
+backend/app/audit/router.py
+backend/app/audit/schemas.py
+backend/app/audit/service.py
+backend/app/auth/__init__.py
+backend/app/auth/models.py
+backend/app/auth/router.py
+backend/app/auth/schemas.py
+backend/app/auth/service.py
+backend/app/billing/models.py
+backend/app/billing/repository.py
+backend/app/billing/router.py
+backend/app/billing/schemas.py
+backend/app/billing/services/billing_service.py
+backend/app/billing/services/exchange_service.py
+backend/app/billing/services/hold_service.py
+backend/app/billing/services/print_service.py
+backend/app/billing/services/return_service.py
+backend/app/branch/__init__.py
+backend/app/branch/models.py
+backend/app/branch/router.py
+backend/app/branch/schemas.py
+backend/app/branch/service.py
+backend/app/common-utilities/README.md
+backend/app/common-utilities/__init__.py
+backend/app/common-utilities/common_utilities.egg-info/PKG-INFO
+backend/app/common-utilities/common_utilities.egg-info/SOURCES.txt
+backend/app/common-utilities/common_utilities.egg-info/dependency_links.txt
+backend/app/common-utilities/common_utilities.egg-info/top_level.txt
+backend/app/common-utilities/database.py
+backend/app/common-utilities/health.py
+backend/app/common-utilities/logging_config.py
+backend/app/common-utilities/logs/.gitkeep
+backend/app/common-utilities/main.py
+backend/app/common-utilities/middleware.py
+backend/app/common-utilities/models.py
+backend/app/common-utilities/requirements.txt
+backend/app/common-utilities/schemas.py
+backend/app/common-utilities/setup.py
+backend/app/core/__init__.py
+backend/app/core/celery_app.py
+backend/app/core/config.py
+backend/app/core/exceptions.py
+backend/app/core/logging_config.py
+backend/app/core/security.py
+backend/app/core/storage.py
+backend/app/customer/models.py
+backend/app/customer/repository.py
+backend/app/customer/router.py
+backend/app/customer/schemas.py
+backend/app/customer/service.py
+backend/app/db/__init__.py
+backend/app/db/base.py
+backend/app/financial-system-backend/.gitignore
+backend/app/financial-system-backend/alembic.ini
+backend/app/financial-system-backend/alembic/README
+backend/app/financial-system-backend/alembic/env.py
+backend/app/financial-system-backend/alembic/script.py.mako
+backend/app/financial-system-backend/alembic/versions/405f6a81108e_initial_migration.py
+backend/app/financial-system-backend/app/api/dependencies.py
+backend/app/financial-system-backend/app/api/endpoints/bankbook.py
+backend/app/financial-system-backend/app/api/endpoints/cashbook.py
+backend/app/financial-system-backend/app/api/endpoints/inventory.py
+backend/app/financial-system-backend/app/api/endpoints/orders.py
+backend/app/financial-system-backend/app/api/endpoints/webhooks.py
+backend/app/financial-system-backend/app/api/router.py
+backend/app/financial-system-backend/app/core/config.py
+backend/app/financial-system-backend/app/core/exceptions.py
+backend/app/financial-system-backend/app/core/security.py
+backend/app/financial-system-backend/app/database/base_class.py
+backend/app/financial-system-backend/app/database/session.py
+backend/app/financial-system-backend/app/main.py
+backend/app/financial-system-backend/app/models/transactions.py
+backend/app/financial-system-backend/app/schemas/bankbook.py
+backend/app/financial-system-backend/app/schemas/cashbook.py
+backend/app/financial-system-backend/app/schemas/payment.py
+backend/app/financial-system-backend/app/services/bankbook_service.py
+backend/app/financial-system-backend/app/services/cashbook_service.py
+backend/app/financial-system-backend/app/services/order_service.py
+backend/app/financial-system-backend/app/services/payment_providers/base.py
+backend/app/financial-system-backend/app/services/payment_providers/billdesk.py
+backend/app/financial-system-backend/app/services/payment_providers/ccavenue.py
+backend/app/financial-system-backend/app/services/payment_providers/paytm.py
+backend/app/financial-system-backend/app/services/payment_providers/pinelabs.py
+backend/app/financial-system-backend/app/services/payment_providers/razorpay.py
+backend/app/financial-system-backend/app/utils/crypto_utils.py
+backend/app/financial-system-backend/app/utils/logger.py
+backend/app/financial-system-backend/init_db.py
+backend/app/financial-system-backend/requirements.txt
+backend/app/inventory management/.gitignore
+backend/app/inventory management/batch/__init__.py
+backend/app/inventory management/batch/admin.py
+backend/app/inventory management/batch/apps.py
+backend/app/inventory management/batch/migrations/0001_initial.py
+backend/app/inventory management/batch/migrations/__init__.py
+backend/app/inventory management/batch/models.py
+backend/app/inventory management/batch/tests.py
+backend/app/inventory management/batch/views.py
+backend/app/inventory management/config/__init__.py
+backend/app/inventory management/config/asgi.py
+backend/app/inventory management/config/settings.py
+backend/app/inventory management/config/urls.py
+backend/app/inventory management/config/wsgi.py
+backend/app/inventory management/inventory/__init__.py
+backend/app/inventory management/inventory/admin.py
+backend/app/inventory management/inventory/apps.py
+backend/app/inventory management/inventory/migrations/0001_initial.py
+backend/app/inventory management/inventory/migrations/0002_inventory_closing_period_end_and_more.py
+backend/app/inventory management/inventory/migrations/0003_damagedstock_reported_by_and_more.py
+backend/app/inventory management/inventory/migrations/__init__.py
+backend/app/inventory management/inventory/models.py
+backend/app/inventory management/inventory/serializers.py
+backend/app/inventory management/inventory/tests.py
+backend/app/inventory management/inventory/urls.py
+backend/app/inventory management/inventory/views.py
+backend/app/inventory management/manage.py
+backend/app/inventory management/medicine/__init__.py
+backend/app/inventory management/medicine/admin.py
+backend/app/inventory management/medicine/apps.py
+backend/app/inventory management/medicine/migrations/0001_initial.py
+backend/app/inventory management/medicine/migrations/0002_medicine_price_medicine_sku.py
+backend/app/inventory management/medicine/migrations/__init__.py
+backend/app/inventory management/medicine/models.py
+backend/app/inventory management/medicine/tests.py
+backend/app/inventory management/medicine/views.py
+backend/app/inventory management/medorax_db
+backend/app/inventory management/purchase/__init__.py
+backend/app/inventory management/purchase/admin.py
+backend/app/inventory management/purchase/apps.py
+backend/app/inventory management/purchase/migrations/0001_initial.py
+backend/app/inventory management/purchase/migrations/__init__.py
+backend/app/inventory management/purchase/models.py
+backend/app/inventory management/purchase/tests.py
+backend/app/inventory management/purchase/views.py
+backend/app/inventory management/requirements.txt
+backend/app/inventory management/stock/__init__.py
+backend/app/inventory management/stock/admin.py
+backend/app/inventory management/stock/apps.py
+backend/app/inventory management/stock/migrations/0001_initial.py
+backend/app/inventory management/stock/migrations/__init__.py
+backend/app/inventory management/stock/models.py
+backend/app/inventory management/stock/serializers.py
+backend/app/inventory management/stock/tests.py
+backend/app/inventory management/stock/views.py
+backend/app/inventory management/supplier/__init__.py
+backend/app/inventory management/supplier/admin.py
+backend/app/inventory management/supplier/apps.py
+backend/app/inventory management/supplier/migrations/0001_initial.py
+backend/app/inventory management/supplier/migrations/__init__.py
+backend/app/inventory management/supplier/models.py
+backend/app/inventory management/supplier/serializers.py
+backend/app/inventory management/supplier/tests.py
+backend/app/inventory management/supplier/views.py
+backend/app/inventory/models.py
+backend/app/inventory/repository.py
+backend/app/inventory/router.py
+backend/app/inventory/schemas.py
+backend/app/inventory/service.py
+backend/app/inventory/services/export_service.py
+backend/app/inventory/services/import_service.py
+backend/app/main.py
+backend/app/medicine/models.py
+backend/app/medicine/repository.py
+backend/app/medicine/router.py
+backend/app/medicine/schemas.py
+backend/app/medicine/service.py
+backend/app/notifications/models.py
+backend/app/notifications/router.py
+backend/app/notifications/schemas.py
+backend/app/notifications/service.py
+backend/app/pharmacy/__init__.py
+backend/app/pharmacy/models.py
+backend/app/pharmacy/router.py
+backend/app/pharmacy/schemas.py
+backend/app/pharmacy/service.py
+backend/app/prescription/models.py
+backend/app/prescription/router.py
+backend/app/prescription/schemas.py
+backend/app/prescription/services/ai_service.py
+backend/app/prescription/services/clinical_safety_service.py
+backend/app/prescription/services/ocr_service.py
+backend/app/prescription/services/prescription_service.py
+backend/app/prescription/services/verification_service.py
+backend/app/prescription/tasks.py
+backend/app/purchase/models.py
+backend/app/purchase/repository.py
+backend/app/purchase/router.py
+backend/app/purchase/schemas.py
+backend/app/purchase/service.py
+backend/app/reports/router.py
+backend/app/reports/schemas.py
+backend/app/reports/service.py
+backend/app/reports/tasks.py
+backend/app/routers/suppliers.py
+backend/app/services/__init__.py
+backend/app/services/audit.py
+backend/app/services/cleanup.py
+backend/app/services/email_service.py
+backend/app/settings/models.py
+backend/app/settings/router.py
+backend/app/settings/schemas.py
+backend/app/settings/service.py
+backend/app/shared/__init__.py
+backend/app/shared/deps.py
+backend/app/shared/middleware.py
+backend/app/shared/rate_limit.py
+backend/app/staff/__init__.py
+backend/app/staff/models.py
+backend/app/staff/permissions.py
+backend/app/staff/router.py
+backend/app/staff/schemas.py
+backend/app/staff/service.py
+backend/app/supplier/models.py
+backend/app/supplier/repository.py
+backend/app/supplier/router.py
+backend/app/supplier/schemas.py
+backend/app/supplier/service.py
+backend/app/user/__init__.py
+backend/app/user/models.py
+backend/app/user/router.py
+backend/app/user/schemas.py
+backend/app/user/service.py
+backend/gateway.py
+backend/migrations/README
+backend/migrations/env.py
+backend/migrations/script.py.mako
+backend/migrations/versions/3ca32b786ec8_add_prescription_model.py
+backend/migrations/versions/44a9b3366d53_add_customer_model.py
+backend/migrations/versions/7cf89e6c3d56_add_pharmacy_settings_model.py
+backend/migrations/versions/8affa269ca3e_add_supplier_and_purchase_models.py
+backend/migrations/versions/9202c826aabb_add_inventory_ledger_model.py
+backend/migrations/versions/a332bcebc555_add_medicine_and_batch.py
+backend/migrations/versions/c78895c1dcb8_add_audit_and_document_models.py
+backend/migrations/versions/dc13139931e8_add_billing_and_sales_models.py
+backend/migrations/versions/f28c11e4fd66_add_notification_model.py
+backend/requirements.txt
+deploy/erp-api.env
+deploy/erp-api.env.example
+deploy/licensing-issuer.env
+docker-compose.prod.yml
+docs/ARCHITECTURE.md
+docs/DEPLOYMENT.md
+docs/FILE-MANIFEST.txt
+docs/LICENSING.md
+docs/RELEASE.md
+docs/SECURITY-CHECKLIST.md
+electron/README.md
+electron/main/main.cjs
+electron/preload/preload.cjs
+frontend/.clinerules
+frontend/.gitignore
+frontend/Dockerfile
+frontend/PROJECT_STRUCTURE.md
+frontend/README.md
+frontend/STRUCTURE.md
+frontend/docker/nginx.conf
+frontend/eslint.config.js
+frontend/eslint_output.txt
+frontend/index.html
+frontend/package-lock.json
+frontend/package.json
+frontend/routing.md
+frontend/src/App.jsx
+frontend/src/assets/WhatsApp_Image_2026-06-22_at_5.25.21_PM-removebg-preview.png
+frontend/src/assets/changePassImg.jpg
+frontend/src/assets/medoraxLogin.jpg
+frontend/src/assets/verifyEmailimg.jpg
+frontend/src/components/authentication/login/LoginForm/LoginForm.css
+frontend/src/components/authentication/login/LoginForm/LoginForm.jsx
+frontend/src/components/authentication/login/LoginForm/index.js
+frontend/src/components/authentication/login/LoginForm/validation.js
+frontend/src/components/authentication/login/LoginIllustration/LoginIllustration.css
+frontend/src/components/authentication/login/LoginIllustration/LoginIllustration.jsx
+frontend/src/components/authentication/login/LoginIllustration/index.js
+frontend/src/components/authentication/shared/AuthFooter/AuthFooter.css
+frontend/src/components/authentication/shared/AuthFooter/AuthFooter.jsx
+frontend/src/components/authentication/shared/AuthFooter/index.js
+frontend/src/components/authentication/shared/AuthNavbar/AuthNavbar.css
+frontend/src/components/authentication/shared/AuthNavbar/AuthNavbar.jsx
+frontend/src/components/authentication/shared/AuthNavbar/index.js
+frontend/src/components/authentication/shared/index.js
+frontend/src/components/billing/common/CartSummary.jsx
+frontend/src/components/importExport/ExportPage.jsx
+frontend/src/components/importExport/ImportPage.jsx
+frontend/src/components/importExport/Shared.jsx
+frontend/src/components/inventoryManagement/common/DataTable.jsx
+frontend/src/components/inventoryManagement/common/EntryModal.jsx
+frontend/src/components/inventoryManagement/common/FilterBar.jsx
+frontend/src/components/inventoryManagement/common/Pagination.jsx
+frontend/src/components/inventoryManagement/common/StatCard.jsx
+frontend/src/components/inventoryManagement/common/StatusBadge.jsx
+frontend/src/components/inventoryManagement/common/entryModalConfigs.js
+frontend/src/components/navigation/AppSidebar.jsx
+frontend/src/components/navigation/AppTopbar.jsx
+frontend/src/components/navigation/ModuleNavigation.jsx
+frontend/src/components/pharmacySettings/common/FormActions.jsx
+frontend/src/components/pharmacySettings/common/FormField.jsx
+frontend/src/components/pharmacySettings/common/PageHeader.jsx
+frontend/src/components/pharmacySettings/common/StatusChip.jsx
+frontend/src/components/pharmacySettings/common/TabBar.jsx
+frontend/src/components/pharmacySettings/common/ToggleSwitch.jsx
+frontend/src/components/pharmacySettings/dashboard/ActivityFeed.jsx
+frontend/src/components/pharmacySettings/dashboard/AnalyticsSection.jsx
+frontend/src/components/pharmacySettings/dashboard/BranchPerformanceCard.jsx
+frontend/src/components/pharmacySettings/dashboard/CategoryDistributionCard.jsx
+frontend/src/components/pharmacySettings/dashboard/DashboardHeader.jsx
+frontend/src/components/pharmacySettings/dashboard/KpiCards.jsx
+frontend/src/components/pharmacySettings/dashboard/LowStockPanel.jsx
+frontend/src/components/pharmacySettings/dashboard/QuickActionsPanel.jsx
+frontend/src/components/pharmacySettings/dashboard/RecentOrdersTable.jsx
+frontend/src/components/pharmacySettings/dashboard/RevenueChart.jsx
+frontend/src/components/pharmacySettings/dashboard/SidePanels.jsx
+frontend/src/components/pharmacySettings/directory/BranchCards.jsx
+frontend/src/components/pharmacySettings/directory/BranchDeepDive.jsx
+frontend/src/components/pharmacySettings/directory/BranchDirectory.jsx
+frontend/src/components/pharmacySettings/directory/ContactAddressCard.jsx
+frontend/src/components/pharmacySettings/directory/DirectorySearchPanel.jsx
+frontend/src/components/pharmacySettings/directory/DirectorySummary.jsx
+frontend/src/components/pharmacySettings/directory/LicenseCards.jsx
+frontend/src/components/pharmacySettings/directory/OwnerInfoCard.jsx
+frontend/src/components/pharmacySettings/directory/PharmacyInfoCard.jsx
+frontend/src/components/pharmacySettings/settings/BranchManagementSection.jsx
+frontend/src/components/pharmacySettings/settings/PharmacyProfileSection.jsx
+frontend/src/components/pharmacySettings/settings/SettingsNavCards.jsx
+frontend/src/components/pharmacySettings/settings/tabs/AddressTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/BranchSettingsTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/BranchStatusTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/BusinessInfoTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/ContactInfoTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/CreateBranchTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/DocumentsTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/EditBranchTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/LicenseTab.jsx
+frontend/src/components/pharmacySettings/settings/tabs/OwnerDetailsTab.jsx
+frontend/src/components/purchases/BatchEntryTab.jsx
+frontend/src/components/purchases/CreditNotesTab.jsx
+frontend/src/components/purchases/ExpiryEntryTab.jsx
+frontend/src/components/purchases/LineItemsTable.jsx
+frontend/src/components/purchases/NotesAndSummary.jsx
+frontend/src/components/purchases/OrderDetailsSection.jsx
+frontend/src/components/purchases/PurchaseReturnTab.jsx
+frontend/src/components/purchases/ReceiveGoodsTab.jsx
+frontend/src/components/purchases/Shared.jsx
+frontend/src/components/reports/CustomerTab.jsx
+frontend/src/components/reports/GSTTab.jsx
+frontend/src/components/reports/InventoryTab.jsx
+frontend/src/components/reports/ProfitTab.jsx
+frontend/src/components/reports/PurchaseTab.jsx
+frontend/src/components/reports/SalesTab.jsx
+frontend/src/components/reports/Shared.jsx
+frontend/src/components/reports/SupplierTab.jsx
+frontend/src/components/staffManagement/activityLogs/ActivityLogsFilters.jsx
+frontend/src/components/staffManagement/activityLogs/ActivityLogsHeader.jsx
+frontend/src/components/staffManagement/activityLogs/ActivityLogsStatsCards.jsx
+frontend/src/components/staffManagement/activityLogs/ActivityLogsTable.jsx
+frontend/src/components/staffManagement/activityLogs/ActivityLogsTableRow.jsx
+frontend/src/components/staffManagement/attendance/AttendanceFilters.jsx
+frontend/src/components/staffManagement/attendance/AttendanceHeader.jsx
+frontend/src/components/staffManagement/attendance/AttendanceStatsCards.jsx
+frontend/src/components/staffManagement/attendance/AttendanceStatusBadge.jsx
+frontend/src/components/staffManagement/attendance/AttendanceTable.jsx
+frontend/src/components/staffManagement/attendance/AttendanceTableRow.jsx
+frontend/src/components/staffManagement/employee/StaffCard.jsx
+frontend/src/components/staffManagement/employee/StaffContactCard.jsx
+frontend/src/components/staffManagement/employee/StaffDocuments.jsx
+frontend/src/components/staffManagement/employee/StaffHeader.jsx
+frontend/src/components/staffManagement/employee/StaffModal.jsx
+frontend/src/components/staffManagement/employee/StaffOverviewCards.jsx
+frontend/src/components/staffManagement/employee/StaffProfileHeader.jsx
+frontend/src/components/staffManagement/kiosk/ActionButtons.jsx
+frontend/src/components/staffManagement/kiosk/ConfirmationDisplay.jsx
+frontend/src/components/staffManagement/kiosk/EmployeeIdInput.jsx
+frontend/src/components/staffManagement/kiosk/KioskCard.jsx
+frontend/src/components/staffManagement/kiosk/KioskFooter.jsx
+frontend/src/components/staffManagement/kiosk/LiveClock.jsx
+frontend/src/components/supplierManagement/dashboard/DashboardHeader.jsx
+frontend/src/components/supplierManagement/dashboard/KpiCards.jsx
+frontend/src/components/supplierManagement/dashboard/SupplierRow.jsx
+frontend/src/components/supplierManagement/dashboard/SupplierTable.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierCard.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierContactCard.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierHeader.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierModal.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierOverviewCards.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierProfileHeader.jsx
+frontend/src/components/supplierManagement/suppliers/SupplierPurchaseOrders.jsx
+frontend/src/data/billing/billingData.js
+frontend/src/data/importExport/data.js
+frontend/src/data/inventoryManagement/inventoryData.js
+frontend/src/data/navigation/navigationData.js
+frontend/src/data/pharmacySettings/pharmacySettingsData.js
+frontend/src/data/purchases/data.js
+frontend/src/data/reports/data.js
+frontend/src/data/reports/mockData.js
+frontend/src/data/staffManagement/activityLogsData.js
+frontend/src/data/staffManagement/attendanceData.js
+frontend/src/hooks/useCart.js
+frontend/src/hooks/useLogin.js
+frontend/src/index.css
+frontend/src/layouts/authentication/AuthLayout.css
+frontend/src/layouts/authentication/AuthLayout.jsx
+frontend/src/layouts/billing/BillingLayout.jsx
+frontend/src/layouts/dashboard/DashboardLayout.jsx
+frontend/src/layouts/inventoryManagement/InventoryLayout.jsx
+frontend/src/layouts/pharmacySettings/PharmacySettingsLayout.jsx
+frontend/src/layouts/purchases/PurchaseLayout.jsx
+frontend/src/layouts/shared/ModuleLayout.jsx
+frontend/src/layouts/staffManagement/StaffManagementLayout.jsx
+frontend/src/layouts/supplierManagement/SupplierManagementLayout.jsx
+frontend/src/main.jsx
+frontend/src/pages/Authentication/ChangePassword.jsx
+frontend/src/pages/Authentication/ForgotPassword.jsx
+frontend/src/pages/Authentication/Login.jsx
+frontend/src/pages/Authentication/VerifyEmail.jsx
+frontend/src/pages/Billing/BarcodeBilling.jsx
+frontend/src/pages/Billing/ManualBilling.jsx
+frontend/src/pages/Billing/PrescriptionBilling.jsx
+frontend/src/pages/Billing/QuickBilling.jsx
+frontend/src/pages/ImportExport/ImportExportPage.jsx
+frontend/src/pages/InventoryManagement/AvailableStock.jsx
+frontend/src/pages/InventoryManagement/BatchManagement.jsx
+frontend/src/pages/InventoryManagement/ClosingStock.jsx
+frontend/src/pages/InventoryManagement/CurrentStock.jsx
+frontend/src/pages/InventoryManagement/DamagedStock.jsx
+frontend/src/pages/InventoryManagement/ExpiredStock.jsx
+frontend/src/pages/InventoryManagement/LowStockAlerts.jsx
+frontend/src/pages/InventoryManagement/NearExpiry.jsx
+frontend/src/pages/InventoryManagement/OpeningStock.jsx
+frontend/src/pages/InventoryManagement/OverstockAlerts.jsx
+frontend/src/pages/InventoryManagement/PhysicalVerification.jsx
+frontend/src/pages/InventoryManagement/ReservedStock.jsx
+frontend/src/pages/InventoryManagement/StockAdjustment.jsx
+frontend/src/pages/InventoryManagement/StockLedger.jsx
+frontend/src/pages/InventoryManagement/StockTransfer.jsx
+frontend/src/pages/LoginHistory/LoginHistory.jsx
+frontend/src/pages/PharmacySettings/Dashboard.jsx
+frontend/src/pages/PharmacySettings/Directory.jsx
+frontend/src/pages/PharmacySettings/Settings.jsx
+frontend/src/pages/Purchases/PurchaseInvoicePage.jsx
+frontend/src/pages/Purchases/PurchaseOrderPage.jsx
+frontend/src/pages/Reports/ReportsPage.jsx
+frontend/src/pages/Search/SearchPage.jsx
+frontend/src/pages/SessionManagement/SessionManagement.jsx
+frontend/src/pages/StaffManagement/StaffInformation.jsx
+frontend/src/pages/StaffManagement/activityLogs/ActivityLogs.jsx
+frontend/src/pages/StaffManagement/attendance/Attendance.jsx
+frontend/src/pages/StaffManagement/dashboard/Dashboard.jsx
+frontend/src/pages/StaffManagement/employee/Employee.jsx
+frontend/src/pages/StaffManagement/kiosk/Kiosk.jsx
+frontend/src/pages/SupplierManagement/Dashboard.jsx
+frontend/src/pages/SupplierManagement/SupplierInformation.jsx
+frontend/src/pages/SupplierManagement/Suppliers.jsx
+frontend/src/routes/Router.jsx
+frontend/src/store/authService.js
+frontend/src/store/authSlice.js
+frontend/src/store/authThunk.js
+frontend/src/store/store.js
+frontend/src/styles/theme.css
+frontend/structure.md
+frontend/vite.config.js
+licensing-issuer/Dockerfile
+licensing-issuer/README.md
+licensing-issuer/app/main.py
+licensing-issuer/requirements.txt
+ops/backup/backup.sh
+ops/nginx/api.medorax.in.conf
+ops/nginx/erp.medorax.in.conf
+ops/postgres/README.md
+ops/prometheus/prometheus.yml
+package.json
+scripts/deploy-production.sh

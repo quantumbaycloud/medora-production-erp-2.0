@@ -1,0 +1,10 @@
+MEDORAX ERP PRODUCTION PATCH
+
+1. Copy this patch over the same paths in the existing ERP checkout.
+2. Backend: python3 -m compileall -q backend/app
+3. Frontend: cd frontend && npm ci && npm run build
+4. Rebuild/restart the ERP services.
+
+The ERP login endpoint is retained. ERP accounts and commercial licenses originate from onboarding/admin provisioning. Self-service registration, email verification and password reset routes are not exposed by the ERP API/UI. License activation is automatic during login from the provisioned signed license.
+
+Do not copy any production .env file from this archive. Supply secrets through the existing deployment environment/secrets.

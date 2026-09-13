@@ -1,0 +1,8 @@
+import { useEffect, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
+import StaffProfileHeader from "../../components/staffManagement/employee/StaffProfileHeader";
+import StaffOverviewCards from "../../components/staffManagement/employee/StaffOverviewCards";
+import StaffContactCard from "../../components/staffManagement/employee/StaffContactCard";
+import StaffDocuments from "../../components/staffManagement/employee/StaffDocuments";
+import api from "../../services/api";
+export default function StaffInformation(){const {staffId}=useParams();const [staff,setStaff]=useState(null);const [error,setError]=useState("");const pharmacyId=localStorage.getItem("medorax.erp.pharmacy_id");useEffect(()=>{if(!pharmacyId)return;api.get(`/pharmacies/${pharmacyId}/staff/${staffId}`).then(({data})=>setStaff({...data,name:[data.first_name,data.last_name].filter(Boolean).join(" "),code:data.employee_code||data.id,role:data.role?.name||"Staff",department:"—",email:data.contact_email||"—",phone:data.contact_phone||"—",address:"—",license:"—",status:data.status==="active"?"Active":data.status})).catch(e=>setError(e?.response?.data?.detail||"Unable to load staff profile."));},[pharmacyId,staffId]);if(!staff)return error?<div className="p-8 text-red-700">{error}</div>:<div className="p-8">Loading staff profile…</div>;return <div className="space-y-6 pb-12"><StaffProfileHeader staff={staff}/><StaffOverviewCards staff={staff}/><div className="grid grid-cols-1 gap-6 xl:grid-cols-3"><div><StaffContactCard staff={staff}/></div><div className="xl:col-span-2"><StaffDocuments staff={staff}/></div></div></div>}

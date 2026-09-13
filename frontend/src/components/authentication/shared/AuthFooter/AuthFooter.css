@@ -1,0 +1,104 @@
+.auth-footer{
+
+height:60px;
+
+flex-shrink:0;
+
+}
+
+.auth-footer-container {
+
+    width: min(1440px, 94%);
+
+    margin: auto;
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    flex-wrap: wrap;
+
+    padding: 16px 0;
+
+}
+
+.footer-brand {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    background: linear-gradient(90deg,
+            #2563EB,
+            #14B8A6,
+            #10B981);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.footer-links {
+
+    display: flex;
+
+    gap: 28px;
+
+    flex-wrap: wrap;
+
+}
+
+.footer-links a {
+
+    color: #64748B;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: .25s;
+
+}
+
+.footer-links a:hover {
+
+    color: #2563EB;
+
+}
+
+.footer-copy {
+
+    font-size: 14px;
+
+    color: #64748B;
+
+}
+
+@media(max-width:900px) {
+
+    .auth-footer-container {
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+    }
+
+    .footer-links {
+
+        justify-content: center;
+
+    }
+
+}

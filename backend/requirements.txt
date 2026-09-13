@@ -1,0 +1,56 @@
+# ── Core Framework ────────────────────────────────────────────────────────────
+fastapi
+starlette
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-multipart
+
+# ── Database ──────────────────────────────────────────────────────────────────
+SQLAlchemy
+alembic
+psycopg[binary]
+
+# ── Auth / Security ───────────────────────────────────────────────────────────
+argon2-cffi==25.1.0
+PyJWT==2.13.0
+cryptography==49.0.0
+
+# ── Input Validation ──────────────────────────────────────────────────────────
+email-validator==2.3.0
+
+# ── HTTP Client ───────────────────────────────────────────────────────────────
+httpx
+
+# ── Rate Limiting ─────────────────────────────────────────────────────────────
+slowapi==0.1.9
+limits
+
+# ── Background Tasks ──────────────────────────────────────────────────────────
+celery
+redis
+
+# ── Storage & Cloud ───────────────────────────────────────────────────────────
+boto3
+
+# ── Export & Reports ──────────────────────────────────────────────────────────
+pandas
+openpyxl
+xlsxwriter
+reportlab
+
+# ── AI / ML (Optional/Phase 11) ───────────────────────────────────────────────
+opencv-python-headless
+paddleocr
+paddlepaddle
+openai
+# elasticsearch
+
+# ── Logging & Utils ───────────────────────────────────────────────────────────
+python-json-logger
+python-dotenv==1.2.2
+
+gunicorn
+
+# ── Observability ─────────────────────────────────────────────────────────────
+prometheus-fastapi-instrumentator==7.1.0

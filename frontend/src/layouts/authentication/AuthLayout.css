@@ -1,0 +1,45 @@
+.auth-layout{
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    background:
+        radial-gradient(circle at top left,#E0F2FE 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#CCFBF1 0%,transparent 35%),
+        #F8FAFC;
+}
+
+.auth-main{
+    flex:1;
+
+    width:min(1600px,95%);
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    align-items:center;
+
+    gap:48px;
+
+    overflow:hidden;
+
+    padding:24px 0;
+}
+
+@media(max-width:1200px){
+
+.auth-main{
+
+grid-template-columns:1fr;
+
+padding:20px;
+
+overflow:auto;
+
+}
+
+}
