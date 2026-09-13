@@ -32,10 +32,14 @@ def _active_license(db: Session, pharmacy_id: str) -> ProvisionedLicense:
     )
     if not row:
         raise HTTPException(403, "Active ERP license not found")
-    if row.expires_at <= datetime.now(timezone.utc):
-        row.status = "expired"
-        db.commit()
-        raise HTTPException(403, "MEDORAX ERP license has expired")
+    expires_at = row.expires_at
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+
+if expires_at <= datetime.now(timezone.utc):
+    row.    status = "expired"
+    db.commit()
+    raise HTTPException(403, "MEDORAX ERP license has expired")
     if not row.license_id or not row.signature:
         raise HTTPException(403, "Installed ERP license envelope is incomplete")
     return row
