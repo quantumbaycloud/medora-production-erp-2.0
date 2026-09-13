@@ -26,7 +26,7 @@ def get_audit_logs(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user),
 ):
-    pharmacy_id = get_current_pharmacy_id(current_user)
+    pharmacy_id = get_current_pharmacy_id(db, current_user.id)
 
     return AuditService.get_logs(
         db=db,
@@ -49,7 +49,7 @@ def list_documents(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user),
 ):
-    pharmacy_id = get_current_pharmacy_id(current_user)
+    pharmacy_id = get_current_pharmacy_id(db, current_user.id)
 
     return AuditService.list_documents(
         db=db,
@@ -75,7 +75,7 @@ def upload_document(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user),
 ):
-    pharmacy_id = get_current_pharmacy_id(current_user)
+    pharmacy_id = get_current_pharmacy_id(db, current_user.id)
 
     return AuditService.upload_document(
         db=db,
@@ -95,7 +95,7 @@ def get_document_download_url(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user),
 ):
-    pharmacy_id = get_current_pharmacy_id(current_user)
+    pharmacy_id = get_current_pharmacy_id(db, current_user.id)
 
     return AuditService.get_document_url(
         db=db,

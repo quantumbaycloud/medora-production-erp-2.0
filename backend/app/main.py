@@ -143,7 +143,11 @@ from app.core.config import settings
 
 origins = settings.cors_origins
 if isinstance(origins, str):
-    origins = [orig.strip() for orig in origins.split(",")]
+    origins = [orig.strip() for orig in origins.split(",") if orig.strip()]
+# Local commercial ERP is served by Vite on localhost; also accept 127.0.0.1
+# so switching the browser host does not turn backend failures into CORS errors.
+if settings.app_env != "production":
+    origins = list(dict.fromkeys([*origins, "http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000", "http://127.0.0.1:3000"]))
 
 app.add_middleware(
     CORSMiddleware,

@@ -35,7 +35,7 @@ def list_purchases(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user)
 ):
-    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id, Permissions.PURCHASE_CREATE.code)
+    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id)
     return PurchaseService.list_purchases(db, active_pharmacy_id, supplier_id, branch_id, status)
 
 @router.get("/{purchase_id}", response_model=PurchaseInvoiceResponse)
@@ -45,7 +45,7 @@ def get_purchase(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user)
 ):
-    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id, Permissions.PURCHASE_CREATE.code)
+    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id)
     return PurchaseService.get_purchase(db, active_pharmacy_id, purchase_id)
 
 @router.patch("/{purchase_id}", response_model=PurchaseInvoiceResponse)

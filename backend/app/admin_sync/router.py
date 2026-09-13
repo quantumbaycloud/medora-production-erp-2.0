@@ -7,7 +7,6 @@ from app.catalog.models import CatalogOption
 from app.catalog.schemas import CatalogOptionCreate
 from app.db.base import get_db
 from app.licensing.deps import get_current_licensed_user
-from app.staff.permissions import Permissions
 from app.staff.service import get_current_pharmacy_id
 from app.user.models import User
 
@@ -30,7 +29,6 @@ async def sync_catalog(
         db,
         current_user.id,
         pharmacy_id,
-        Permissions.SETTINGS_UPDATE.code,
     )
 
     payload = await pull_catalog_from_admin(db, active)

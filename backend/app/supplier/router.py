@@ -29,7 +29,7 @@ def list_suppliers(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user)
 ):
-    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id, Permissions.PURCHASE_CREATE.code)
+    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id)
     return SupplierService.list_suppliers(db, active_pharmacy_id, q)
 
 @router.get("/{supplier_id}", response_model=SupplierResponse)
@@ -39,7 +39,7 @@ def get_supplier(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_licensed_user)
 ):
-    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id, Permissions.PURCHASE_CREATE.code)
+    active_pharmacy_id = get_current_pharmacy_id(db, current_user.id, pharmacy_id)
     return SupplierService.get_supplier(db, active_pharmacy_id, supplier_id)
 
 @router.patch("/{supplier_id}", response_model=SupplierResponse)
