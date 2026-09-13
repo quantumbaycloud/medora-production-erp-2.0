@@ -1,4 +1,4 @@
-"""
+﻿"""
 app/core/config.py
 
 Application settings loaded from environment variables / .env file.
@@ -12,27 +12,27 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    # ── Runtime
+    # â”€â”€ Runtime
     app_env: str = "development"
 
-    # ── Database ──────────────────────────────────────────────────────────────
+    # â”€â”€ Database â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     database_url: str = ""
 
-    # ── JWT ───────────────────────────────────────────────────────────────────
+    # â”€â”€ JWT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     jwt_secret: str = "change-this-in-local-development-must-be-32-chars"
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 30
 
-    # ── Business Rules ────────────────────────────────────────────────────────
+    # â”€â”€ Business Rules â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     email_required: bool = True
     phone_required: bool = False
     max_active_devices: int | None = None
     require_phone_verification_for_login: bool = False
 
-    # ── Email ─────────────────────────────────────────────────────────────────
+    # â”€â”€ Email â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     # Provider: "console" (dev/test) | "smtp" | "resend"
-    # "console" logs the token to stdout only — never use in production.
+    # "console" logs the token to stdout only â€” never use in production.
     email_provider: str = "console"
     email_from: str = "noreply@medorax.com"
     email_from_name: str = "Medorax"
@@ -53,7 +53,7 @@ class Settings(BaseSettings):
     # Must be set to the production domain. Example: https://app.medorax.com
     app_base_url: str = ""
 
-    # ── Cleanup Retention ────────────────────────────────────────────────────
+    # â”€â”€ Cleanup Retention â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     # All values are thresholds: records OLDER than these values are eligible
     # for deletion. Tune per compliance / business requirements.
     cleanup_verification_token_hours: int = 48
@@ -63,7 +63,7 @@ class Settings(BaseSettings):
     # Unverified users older than this with no sessions are eligible for deletion.
     cleanup_unverified_user_days: int = 7
 
-    # ── Rate Limiting ─────────────────────────────────────────────────────────
+    # â”€â”€ Rate Limiting â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     # Format: "N/period" where period is second|minute|hour|day
     # These feed directly into slowapi @limiter.limit() decorators.
     rate_limit_login: str = "10/minute"
@@ -72,14 +72,14 @@ class Settings(BaseSettings):
     rate_limit_resend_verification: str = "3/minute"
     rate_limit_refresh: str = "30/minute"
 
-    # ── CORS ──────────────────────────────────────────────────────────────────
+    # â”€â”€ CORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     cors_origins: str | list[str] = "*"
     auto_create_tables: bool = True
 
-    # ── Internal / Ops ────────────────────────────────────────────────────────
+    # â”€â”€ Internal / Ops â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     internal_api_key: str = ""
 
-    # ── Commercial MEDORAX ERP licensing ─────────────────────────────────────
+    # â”€â”€ Commercial MEDORAX ERP licensing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     license_issuer_url: str = ""
     # ERP runtime clients do not receive the issuer administration token.
     # License issuance/revocation remains restricted to the onboarding control plane.
@@ -87,13 +87,16 @@ class Settings(BaseSettings):
     license_public_key_file: str = "/run/secrets/medorax-license/public.pem"
     license_offline_grace_hours: int = 24
     erp_provision_token: str = ""
-    # Central Admin ERP customization sync. The ERP authenticates using the installed license envelope.\n    admin_sync_url: str = ""\n    admin_sync_timeout_seconds: int = 10\n
-    # ── Background Tasks (Celery) & Redis ─────────────────────────────────────
+    # Central Admin ERP customization sync. The ERP authenticates using the installed license envelope.
+    admin_sync_url: str = ""
+    admin_sync_timeout_seconds: int = 10
+
+    # â”€â”€ Background Tasks (Celery) & Redis â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     redis_url: str = "redis://localhost:6379/0"
     celery_broker_url: str = "redis://localhost:6379/0"
     celery_result_backend: str = "redis://localhost:6379/1"
 
-    # ── Object Storage (S3 / MinIO) ───────────────────────────────────────────
+    # â”€â”€ Object Storage (S3 / MinIO) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     storage_endpoint: str = ""
     storage_access_key: str = ""
     storage_secret_key: str = ""
@@ -101,13 +104,13 @@ class Settings(BaseSettings):
     storage_bucket_prescriptions: str = "prescriptions"
     storage_bucket_documents: str = "documents"
 
-    # ── AI / ML / Search (Optional) ───────────────────────────────────────────
+    # â”€â”€ AI / ML / Search (Optional) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     elasticsearch_url: str | None = None
     llm_api_key: str | None = None
     llm_base_url: str | None = None
     llm_model: str = "qwen-plus"
 
-    # ── Validators ────────────────────────────────────────────────────────────
+    # â”€â”€ Validators â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
     @model_validator(mode="after")
     def validate_production_secrets(self) -> "Settings":
