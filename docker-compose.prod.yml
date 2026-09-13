@@ -18,6 +18,21 @@ services:
       - redis_data:/data
     networks: [internal]
 
+  licensing-issuer:
+    build:
+      context: ./licensing-issuer
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - ./deploy/licensing-issuer.env
+    volumes:
+      - ./local-secrets/licensing/private.pem:/run/secrets/medorax-license/private.pem:ro
+      - licensing_data:/data
+    depends_on:
+      postgres:
+        condition: service_started
+    networks: [internal]
+
   erp-api:
     build: ./backend
     restart: unless-stopped
@@ -25,7 +40,13 @@ services:
     environment:
       LICENSE_ISSUER_URL: https://api.medorax.in/licensing
       LICENSE_ISSUER_TOKEN: ""
-    depends_on: [postgres, redis]
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      licensing-issuer:
+        condition: service_started
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=3)"]
       interval: 30s
@@ -40,7 +61,7 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_BASE_URL: https://erp-api.medorax.in
+        VITE_API_BASE_URL: https://api.medorax.in
     restart: unless-stopped
     networks: [internal]
 
@@ -56,9 +77,12 @@ services:
         condition: service_healthy
       erp-web:
         condition: service_started
+      licensing-issuer:
+        condition: service_started
     networks: [internal]
 
 volumes:
+  licensing_data:
   postgres_data:
   redis_data:
 networks:

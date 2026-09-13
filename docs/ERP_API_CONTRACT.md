@@ -22,3 +22,12 @@ All customer-facing ERP endpoints require a Bearer access token and an active li
 - `/internal/erp/*` — protected onboarding/admin provisioning
 
 The frontend must use these APIs rather than embedded demo records.
+
+
+## Production routing
+
+Production ERP clients use `https://api.medorax.in` for all ERP API requests. The public ERP UI is `https://erp.medorax.in`.
+
+The Electron Windows client loads `https://erp.medorax.in` and does not embed server credentials or licensing private keys.
+
+For the complete production routing and Admin synchronization contract, see `docs/UNIFIED_ERP_API.md`.
