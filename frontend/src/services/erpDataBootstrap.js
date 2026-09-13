@@ -42,13 +42,9 @@ export async function loadERPData() {
   setActivePharmacyId(pharmacy.id);
 
   const q = withPharmacy();
-  // Pull pharmacy-scoped master data from Medorax Admin before loading forms.
-  // The ERP backend authenticates the request with its installed signed license.
-  try {
-    await api.post("/admin-sync/catalog", null, { params: q });
-  } catch (error) {
-    console.warn("[ERP bootstrap] Admin catalog sync unavailable; using local catalog cache.", error?.response?.data || error?.message);
-  }
+  // Medorax Admin is authoritative for commercial ERP master configuration.
+  // Do not silently continue with stale/local catalog data when central sync fails.
+  await api.post("/admin-sync/catalog", null, { params: q });
 
   const requests = [
     ["catalog", api.get("/catalog", { params: q })],

@@ -53,7 +53,7 @@ async def pull_catalog_from_admin(db: Session, pharmacy_id: str):
     ERP is behind NAT or its inbound Cloudflare tunnel is unavailable.
     """
     if not settings.admin_sync_url:
-        return {"status": "disabled", "pharmacyId": pharmacy_id, "options": []}
+        raise HTTPException(503, "Medorax Admin sync service is not configured")
 
     license_row = _active_license(db, pharmacy_id)
     url = settings.admin_sync_url.rstrip("/") + f"/erp-sync/{pharmacy_id}/catalog"
