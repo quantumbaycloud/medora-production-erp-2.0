@@ -6,20 +6,16 @@
 - Onboarding receives a signed Ed25519 license envelope and provisions that exact envelope to ERP.
 - ERP verifies the signature locally using only the public key, then activates/validates the device with the central issuer.
 - ERP installations do not contain the issuer private key or issuer administration token.
-- The ERP production API is `https://erp-api.medorax.in`; `api.medorax.in` remains the onboarding/licensing control-plane API.
+- The ERP production API is `https://api.medorax.in/erp`; `api.medorax.in` remains the onboarding/licensing control-plane host.
 
 ## Local test
-1. Replace the listed files in the existing ERP project.
-2. Ensure `local-secrets/licensing/public.pem` is present.
-3. Rebuild the local ERP API/web:
-   `docker compose -f docker-compose.local.yml up -d --build`
-4. The local ERP now uses the central issuer automatically.
-5. Provisioning must contain the exact `license`, `licenseSignature`, and `licenseKey` issued by onboarding.
-6. On first login, ERP automatically activates the provisioned signed license for the current device.
+1. Run `python scripts/generate-license-keys.py` once for local development.
+2. Run `scripts/local-bootstrap.ps1` on Windows, or `bash scripts/local-bootstrap.sh` on Linux/macOS.
+3. The local stack uses a local licensing issuer and the normal ERP provisioning contract; it never contacts production Admin for local bootstrap.
+4. On first login, ERP automatically activates the provisioned signed license for the current device.
 
 ## Production deployment
-- Configure DNS/TLS for `erp-api.medorax.in` to the ERP server.
-- Keep `api.medorax.in` pointing to the onboarding/licensing server.
+- Configure DNS/TLS for `erp.medorax.in` to the ERP web server and keep `api.medorax.in` on the onboarding/control-plane server. Route `api.medorax.in/erp/` to the ERP API container.
 - Build/restart the ERP stack with `docker-compose.prod.yml`.
 - Do not copy issuer private keys or issuer admin tokens into the ERP installation.
 

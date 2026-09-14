@@ -16,6 +16,6 @@ echo '[4/5] Run ERP database migrations'
 docker compose -f docker-compose.prod.yml run --rm erp-api alembic upgrade head
 
 echo '[5/5] Start ERP application'
-docker compose -f docker-compose.prod.yml up -d erp-api erp-web nginx
+docker compose -f docker-compose.prod.yml up -d erp-api erp-web
 
 docker compose -f docker-compose.prod.yml ps

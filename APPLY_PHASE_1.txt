@@ -1,0 +1,17 @@
+MEDORAX ERP PHASE 1 PATCH
+
+1. Back up the existing ERP checkout.
+2. Extract this patch into the ERP repository root and overwrite same-path files.
+3. Delete the files listed in PHASE_1_DELETE_FILES.txt.
+4. On Windows, from the ERP root run:
+   python scripts/generate-license-keys.py
+   powershell -ExecutionPolicy Bypass -File scripts/local-bootstrap.ps1
+5. Open http://localhost:5173 and use the credentials printed by the bootstrap.
+6. Before production deployment, set real secrets in deploy/erp-api.env (do not commit them).
+7. Production routing must be:
+   https://erp.medorax.in/ -> host nginx -> 127.0.0.1:8273
+   https://api.medorax.in/erp/ -> host nginx -> 127.0.0.1:8200/
+8. Run production migrations before starting the ERP API:
+   docker compose -f docker-compose.prod.yml run --rm erp-api alembic upgrade head
+
+This is Phase 1 only. Electron changes are intentionally excluded; Phase 2 will update the Windows desktop shell after the web/API path is verified.

@@ -3,7 +3,7 @@
 ## Production endpoints
 
 - ERP frontend: `https://erp.medorax.in`
-- ERP API: `https://api.medorax.in`
+- ERP API: `https://api.medorax.in/erp`
 - Central Admin/Onboarding API: `https://api.medorax.in`
 - Central license issuer protocol: `https://api.medorax.in/licensing`
 - Unified API documentation is served by the control-plane `unified-docs` service.
@@ -79,7 +79,7 @@ Central issuance/renewal/revocation is control-plane functionality under `/licen
 
 ## Deployment rule
 
-The browser/Electron client must call `https://api.medorax.in`. Do not ship a production build pointing to `localhost`, `127.0.0.1`, or `erp-api.medorax.in`.
+The browser/Electron client must call `https://api.medorax.in/erp`. Do not ship a production build pointing to `localhost`, `127.0.0.1`, or `erp-api.medorax.in`.
 
 The Windows Electron client opens `https://erp.medorax.in`; the web frontend then communicates with `https://api.medorax.in`.
 

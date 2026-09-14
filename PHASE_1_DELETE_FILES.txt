@@ -1,0 +1,5 @@
+Delete these obsolete ERP files after applying Phase 1:
+- ops/nginx/erp-api.medorax.in.conf
+- ops/nginx/erp.meodrax.in.conf
+
+Do NOT delete the onboarding repository's licensing issuer. The ERP local Compose stack has its own development-only issuer source, while production licensing authority remains on the onboarding/control plane.
