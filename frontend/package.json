@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "electron": "electron .",
     "dev:desktop": "concurrently \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
-    "dist": "npm run build && electron-builder"
+    "dist": "npm run build && electron-builder",
+    "electron:local": "cross-env MEDORAX_ERP_URL=http://127.0.0.1:5173 electron .",
+    "electron:production": "cross-env MEDORAX_ERP_URL=https://erp.medorax.in electron ."
   },
   "build": {
     "appId": "in.medorax.erp",

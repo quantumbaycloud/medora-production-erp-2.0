@@ -42,9 +42,26 @@ export async function loadERPData() {
   setActivePharmacyId(pharmacy.id);
 
   const q = withPharmacy();
-  // Medorax Admin is authoritative for commercial ERP master configuration.
-  // Do not silently continue with stale/local catalog data when central sync fails.
-  await api.post("/admin-sync/catalog", null, { params: q });
+  // Production: Medorax Admin is authoritative for commercial ERP master configuration.
+  // Local development is intentionally isolated and never contacts production Admin.
+  const adminSyncEnabled = String(import.meta.env.VITE_ENABLE_ADMIN_SYNC || "false").toLowerCase() === "true";
+  if (adminSyncEnabled) {
+    try {
+      await api.post("/admin-sync/catalog", null, { params: q });
+    } catch (error) {
+      const detail =
+        error?.response?.data?.detail ||
+        error?.response?.data ||
+        error?.message ||
+        "Unknown error";
+      console.error("[ERP bootstrap] Mandatory Admin catalog sync failed:", detail);
+      throw new Error(
+        `Medorax Admin synchronization failed: ${
+          typeof detail === "string" ? detail : "Please check your Admin connection and license."
+        }`
+      );
+    }
+  }
 
   const requests = [
     ["catalog", api.get("/catalog", { params: q })],

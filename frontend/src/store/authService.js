@@ -10,13 +10,20 @@ export const getDeviceIdentifier = () => {
   return value;
 };
 
+const isElectron = () => Boolean(window.medoraxDesktop?.isDesktop);
+const platform = () => isElectron() ? "windows" : "web";
+
 const authService = {
   async login(data) {
     const response = await api.post("/auth/login", {
-      ...data,
+      identifier: String(data.identifier || "").trim(),
+      password: data.password,
       device_identifier: data.device_identifier || getDeviceIdentifier(),
-      platform: "web",
-      device_name: navigator.userAgent.slice(0, 255),
+      platform: platform(),
+      device_name: isElectron()
+        ? `MEDORAX ERP Windows Desktop (${navigator.userAgent.slice(0, 120)})`
+        : navigator.userAgent.slice(0, 255),
+      app_version: isElectron() ? "2.0.0" : undefined,
     });
     const result = response.data || {};
     if (result.access_token) localStorage.setItem("accessToken", result.access_token);
@@ -32,12 +39,14 @@ const authService = {
   },
   async logout() {
     try { return await api.post("/auth/logout"); }
-    finally {
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      localStorage.removeItem("user");
-    }
+    finally { clearAuth(); }
   },
 };
+
+function clearAuth() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  localStorage.removeItem("user");
+}
 
 export default authService;

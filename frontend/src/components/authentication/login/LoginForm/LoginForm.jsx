@@ -63,6 +63,8 @@ export default function LoginForm() {
           </label>
           <input
             id="email"
+            name="identifier"
+            autoComplete="username"
             type="text"
             className="w-full h-11 px-4 rounded border border-[#c2c6d3] bg-[#ffffff] text-[16px] leading-[24px] font-normal text-[#121c2a] focus:outline-none focus:border-[#004287] focus:ring-2 focus:ring-[#004287]/20 transition-all placeholder:text-[#737782]/50"
             placeholder="ERP username, email or mobile number"
@@ -84,6 +86,8 @@ export default function LoginForm() {
           <div className="relative">
             <input
               id="password"
+              name="password"
+              autoComplete="current-password"
               type={showPassword ? "text" : "password"}
               className="w-full h-11 px-4 rounded border border-[#c2c6d3] bg-[#ffffff] text-[16px] leading-[24px] font-normal text-[#121c2a] focus:outline-none focus:border-[#004287] focus:ring-2 focus:ring-[#004287]/20 transition-all placeholder:text-[#737782]/50 pr-12"
               placeholder="••••••••"

@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || window.location.origin;
+const baseURL = String(import.meta.env.VITE_API_BASE_URL || "").trim().replace(/\/$/, "");
+
+if (!baseURL) {
+  throw new Error("VITE_API_BASE_URL is required. Configure the local or production frontend build explicitly.");
+}
 
 const api = axios.create({
   baseURL,
@@ -49,9 +53,7 @@ api.interceptors.response.use(
           localStorage.setItem("accessToken", data.access_token);
           if (data.refresh_token) localStorage.setItem("refreshToken", data.refresh_token);
           return data.access_token;
-        }).finally(() => {
-          refreshPromise = null;
-        });
+        }).finally(() => { refreshPromise = null; });
       }
       const token = await refreshPromise;
       original.headers.Authorization = `Bearer ${token}`;

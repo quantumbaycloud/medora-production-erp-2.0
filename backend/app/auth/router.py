@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session as DbSession
 
 from app.auth import service
 from app.auth.models import LoginHistory, Session as AuthSession
-from app.auth.schemas import DeviceRead, DeviceUpdate, ForgotPasswordRequest, LoginRequest, RefreshRequest, RegisterRequest, ResendVerificationRequest, ResetPasswordRequest, SessionRead, TokenResponse, VerifyEmailRequest
+from app.auth.schemas import DeviceRead, DeviceUpdate, ForgotPasswordRequest, LoginRequest, RefreshRequest, ResendVerificationRequest, ResetPasswordRequest, SessionRead, TokenResponse, VerifyEmailRequest
 from app.core.config import settings
 from app.db.base import get_db
 from app.services.email_service import EmailSendError, send_password_reset_email, send_verification_email
@@ -37,13 +37,6 @@ def _email_task(to: str, token: str, kind: str):
         (send_verification_email if kind == "verification" else send_password_reset_email)(to, token)
     except EmailSendError:
         pass
-
-@router.post("/register", status_code=201)
-@limiter.limit(settings.rate_limit_register)
-def register(request: Request, payload: RegisterRequest, background_tasks: BackgroundTasks, db: DbSession = Depends(get_db)):
-    user, token = service.register_user(db, payload.name, str(payload.email) if payload.email else None, payload.phone, payload.password)
-    if token and user.email: background_tasks.add_task(_email_task, user.email, token, "verification")
-    return {"user": _user(user, db), "message": "Registration successful"}
 
 @router.post("/verify-email")
 def verify_email(payload: VerifyEmailRequest, db: DbSession = Depends(get_db)):
