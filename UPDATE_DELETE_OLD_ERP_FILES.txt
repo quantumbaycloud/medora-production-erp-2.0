@@ -1,0 +1,9 @@
+Delete these obsolete ERP-local files/directories after applying the update:
+- licensing-issuer/
+- ops/nginx/api.medorax.in.conf
+- ops/nginx/erp-api.medorax.in.conf
+- deploy/licensing-issuer.env
+- deploy/licensing-issuer.local.env
+
+Reason: the commercial licensing authority belongs to the onboarding server. The ERP only validates signed licenses and calls the public activation/validation protocol at https://api.medorax.in/licensing.
+Do NOT delete the onboarding repository's licensing-issuer service.

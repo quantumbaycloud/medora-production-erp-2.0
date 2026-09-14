@@ -11,7 +11,6 @@ export default function LoginForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -27,7 +26,7 @@ export default function LoginForm() {
       const destination = location.state?.from?.pathname || "/";
       navigate(destination, { replace: true });
     } catch (err) {
-      const message = err?.detail || err?.message || "Unable to sign in. Check your credentials and license.";
+      const message = err?.detail || err?.message || "Unable to sign in. Check your ERP credentials and license status.";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -106,22 +105,6 @@ export default function LoginForm() {
               </span>
             </button>
           </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <input
-            id="remember"
-            type="checkbox"
-            className="w-3.5 h-3.5 rounded-sm border-[#c2c6d3] text-[#004287] focus:ring-[#004287]"
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
-          />
-          <label
-            className="text-[14px] leading-[20px] font-normal text-[#424751] cursor-pointer"
-            htmlFor="remember"
-          >
-            Remember this device for 30 days
-          </label>
         </div>
 
         {error && (

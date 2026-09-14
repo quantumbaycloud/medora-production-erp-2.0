@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const baseURL = String(import.meta.env.VITE_API_BASE_URL || "").trim().replace(/\/$/, "");
-
-if (!baseURL) {
-  throw new Error("VITE_API_BASE_URL is required. Configure the local or production frontend build explicitly.");
-}
+const configuredBaseURL = String(import.meta.env.VITE_API_BASE_URL || "").trim();
+const baseURL = (configuredBaseURL || (import.meta.env.DEV ? "http://localhost:8000" : "https://api.medorax.in/erp"))
+  .replace(/\/$/, "");
 
 const api = axios.create({
   baseURL,

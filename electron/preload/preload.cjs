@@ -1,7 +1,10 @@
-const { contextBridge } = require('electron');
+const { contextBridge } = require("electron");
 
-contextBridge.exposeInMainWorld('medoraxDesktop', Object.freeze({
-  platform: process.platform,
-  version: process.versions.electron,
-  isDesktop: true,
-}));
+contextBridge.exposeInMainWorld(
+  "medoraxDesktop",
+  Object.freeze({
+    isDesktop: true,
+    platform: process.platform,
+    version: process.versions.electron,
+  }),
+);
